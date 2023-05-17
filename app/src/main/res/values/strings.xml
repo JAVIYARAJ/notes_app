@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">NotesApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search</string>
+    <string name="notes">Notes</string>
+
+    <string-array name="taskCategory">
+        <item>Home</item>
+        <item>Education</item>
+        <item>Grocery</item>
+        <item>Others</item>
+    </string-array>
 </resources>

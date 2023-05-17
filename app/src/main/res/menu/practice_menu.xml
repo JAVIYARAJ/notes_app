@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/homeItem"
+    <item
+        android:id="@+id/homeItem"
         android:icon="@drawable/ic_home_icon"
         android:title="Home" />
 
-    <item android:id="@+id/categoryItem"
+    <item
+        android:id="@+id/categoryItem"
         android:icon="@drawable/ic_category_home_icon"
         android:title="Category" />
 
-    <item android:id="@+id/favItem"
+    <item
+        android:id="@+id/placeholderItem"
+        android:title="" />
+
+    <item
+        android:id="@+id/favItem"
         android:icon="@drawable/ic_checklist_icon"
         android:title="Favorite" />
 
-    <item android:id="@+id/settingItem"
+
+    <item
+        android:id="@+id/settingItem"
         android:icon="@drawable/ic_setting_icon"
         android:title="Setting" />
 

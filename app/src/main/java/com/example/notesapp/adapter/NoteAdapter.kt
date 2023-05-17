@@ -1,4 +1,4 @@
-package com.example.notesapp
+package com.example.notesapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,16 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.notesapp.R
 import com.example.notesapp.models.Notes
 
 class NoteAdapter(var noteList: ArrayList<Notes>, var context: Context) :
     RecyclerView.Adapter<NoteAdapter.MyNoteViewModel>() {
     class MyNoteViewModel(view: View) : RecyclerView.ViewHolder(view) {
 
-        var noteTitle = view.findViewById<TextView>(R.id.notesTitle)
-        var noteDescription = view.findViewById<TextView>(R.id.notesDescription)
-        var noteCategory = view.findViewById<TextView>(R.id.noteCategory)
-        var notePublishedDate = view.findViewById<TextView>(R.id.notesPublishedDate)
+        var noteTitle: TextView = view.findViewById<TextView>(R.id.notesTitle)
+        var noteDescription: TextView = view.findViewById<TextView>(R.id.notesDescription)
+        var noteCategory: TextView = view.findViewById<TextView>(R.id.noteCategory)
+        var notePublishedDate: TextView = view.findViewById<TextView>(R.id.notesPublishedDate)
 
     }
 
@@ -31,7 +32,7 @@ class NoteAdapter(var noteList: ArrayList<Notes>, var context: Context) :
 
         holder.noteTitle.text = item.title
         holder.noteDescription.text = item.description
-        holder.noteCategory.text = item.category.toString()
+        holder.noteCategory.text = item.category
         holder.notePublishedDate.text = item.date;
     }
 

@@ -26,19 +26,16 @@
         app:itemTextColor="@color/white">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             app:itemIconTint="@color/white"
-            app:itemTextColor="@color/white"
             android:background="@drawable/custom_rounded_background"
             app:menu="@menu/practice_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingAddNoteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/notesBottomNavbar"

@@ -1,62 +1,102 @@
 package com.example.notesapp
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.GradientDrawable.Orientation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.FrameLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.notesapp.fragments.*
 import com.example.notesapp.models.Notes
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.transition.MaterialSharedAxis.Axis
 
 class MainActivity : AppCompatActivity() {
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       var recyclerView = findViewById<RecyclerView>(R.id.notesRecyclerView);
+        var fragment: Fragment? = HomeFragment();
+        var name = "home"
+        loadFragment(fragment!!, name, true);
 
-        var data = ArrayList<Notes>();
-        with(data) {
-            add(
-                Notes(
-                    1,
-                    "Retrofit with MVVM",
-                    "Retrofit is use to get json data from api or database.",
-                    arrayListOf<String>("Success", "Goals"),
-                    "20/02/2023"
-                )
-            )
-            add(
-                Notes(
-                    2,
-                    "Volley with MVVM",
-                    "Volley is use to get json data from api or database.",
-                    arrayListOf<String>("Success", "Goals"),
-                    "20/02/2023"
-                )
-            )
-            add(
-                Notes(
-                    2,
-                    "Fragment",
-                    "Fragment is use to make design reusable.",
-                    arrayListOf<String>("IT", "Education"),
-                    "20/02/2023"
-                )
-            )
-            add(
-                Notes(
-                    2,
-                    "Rest Api",
-                    "RESTful API is an interface that two computer systems use to exchange information securely over the internet.",
-                    arrayListOf<String>("IT", "Education"),
-                    "20/02/2023"
-                )
-            )
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomMenu);
+
+        val floatingAddNoteBtn=findViewById<FloatingActionButton>(R.id.floatingAddNoteBtn);
+
+        floatingAddNoteBtn.setOnClickListener {
+            val noteFragment=AddNoteFragment();
+            loadFragment(noteFragment, "addNote", false);
         }
 
-        var noteAdapter=NoteAdapter(noteList = data, context = applicationContext)
-        recyclerView.layoutManager=LinearLayoutManager(this)
-        recyclerView.adapter=noteAdapter;
-        noteAdapter.notifyDataSetChanged();
+        bottomNavigationView.setOnItemSelectedListener {
+            fragment = null;
+            when (it.itemId) {
+                R.id.homeItem -> {
+                    Log.d("Practice", "${supportFragmentManager.fragments}");
+
+                    name = "home"
+                    fragment = HomeFragment();
+                    loadFragment(fragment!!, name, true);
+                }
+                R.id.categoryItem -> {
+                    Log.d("Practice", "${supportFragmentManager.fragments}");
+                    name = "category"
+                    fragment = CategoryFragment();
+                    loadFragment(fragment!!, name);
+                }
+                R.id.favItem -> {
+                    name = "favorite"
+                    fragment = FavoritesFragment();
+                    loadFragment(fragment!!, name);
+                }
+                R.id.settingItem -> {
+                    name = "setting"
+                    fragment = SettingFragment();
+                    loadFragment(fragment!!, name)
+                }
+                else -> {
+                    fragment = HomeFragment();
+                    loadFragment(fragment!!, "");
+
+                }
+            }
+
+            true
+        }
 
     }
+
+    private fun loadFragment(fragment: Fragment, name: String = "home", isParent: Boolean = false) {
+
+        val fragmentManager = supportFragmentManager;
+        val transaction = fragmentManager.beginTransaction();
+
+        if (isParent) {
+            transaction.add(R.id.notesFrameLayout, fragment);
+            fragmentManager.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            transaction.addToBackStack("home");
+        } else {
+            transaction.replace(R.id.notesFrameLayout, fragment);
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val count = supportFragmentManager.backStackEntryCount;
+        if (count == 1) {
+            finish();
+        }
+    }
+
 }
