@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val floatingAddNoteBtn=findViewById<FloatingActionButton>(R.id.floatingAddNoteBtn);
 
         floatingAddNoteBtn.setOnClickListener {
-            val noteFragment=AddNoteFragment();
+            val noteFragment=AddNoteFragment(this);
             loadFragment(noteFragment, "addNote", false);
         }
 

@@ -131,11 +131,32 @@
             android:paddingStart="10dp"
             android:scrollbars="vertical" />
 
-        <TextView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choose Pdf"
-            android:textSize="20sp" />
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Documents"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/chooseDocument"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Select Document"
+                android:gravity="center"
+                android:background="@drawable/custom_input_background"
+                android:textSize="20sp" />
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/noteDocumentsRecyclerview"
