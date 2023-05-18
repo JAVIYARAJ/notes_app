@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/noteCard"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="5dp"
@@ -14,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Retrofit with MVVM"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textFontWeight="@integer/material_motion_duration_long_1"
         android:textSize="20sp" />
@@ -32,15 +35,15 @@
 
     <TextView
         android:id="@+id/noteCategory"
-        android:layout_width="wrap_content"
+        android:layout_width="35dp"
         android:layout_height="wrap_content"
-        android:minWidth="60dp"
+        android:minWidth="40dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/custom_note_category_rounded_background"
         android:gravity="center"
         android:paddingHorizontal="10dp"
         android:paddingVertical="5dp"
-        android:text="Design"
+        android:text="D"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -55,5 +58,12 @@
         android:textColor="@color/black"
         android:textFontWeight="@integer/material_motion_duration_long_1"
         android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/noteStatusCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

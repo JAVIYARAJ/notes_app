@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var fragment: Fragment? = HomeFragment();
+        var fragment: Fragment? = HomeFragment(this);
         var name = "home"
         loadFragment(fragment!!, name, true);
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Practice", "${supportFragmentManager.fragments}");
 
                     name = "home"
-                    fragment = HomeFragment();
+                    fragment = HomeFragment(this);
                     loadFragment(fragment!!, name, true);
                 }
                 R.id.categoryItem -> {
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                     loadFragment(fragment!!, name)
                 }
                 else -> {
-                    fragment = HomeFragment();
+                    fragment = HomeFragment(this);
                     loadFragment(fragment!!, "");
 
                 }
